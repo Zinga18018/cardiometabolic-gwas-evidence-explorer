@@ -108,6 +108,39 @@ class EvidenceValidationTests(unittest.TestCase):
         self.assertIn("provides no additional detail", page)
         self.assertEqual({row["source_quality_controls"] for row in csv_rows}, {expected})
 
+    def test_generated_explorer_teaches_terms_and_exposes_real_dataset(self):
+        root = Path(__file__).resolve().parents[1]
+        with tempfile.TemporaryDirectory() as tmp, redirect_stdout(io.StringIO()):
+            build(Snapshot(root / "data"), tmp)
+            page = (Path(tmp) / "index.html").read_text(encoding="utf-8")
+
+        for required_copy in (
+            "What do five type 2 diabetes genetic signals point to?",
+            "Yes — this is real public aggregate data.",
+            "How to read this project",
+            "Candidate genes returned by Open Targets",
+            "Molecular evidence by gene and tissue",
+            "Variants retained after fine-mapping",
+            "Beginner glossary",
+            "not the complete FinnGen GWAS summary-statistics download",
+        ):
+            self.assertIn(required_copy, page)
+        self.assertEqual(page.count('class="reading-step"'), 4)
+        for dataset_href in (
+            "dataset/variants.csv",
+            "dataset/l2g_candidates.csv",
+            "dataset/molecular_qtl_colocalisations.csv",
+            "dataset/README.md",
+            "dataset/open_targets_raw_snapshot.zip",
+        ):
+            self.assertIn(f'href="{dataset_href}"', page)
+        self.assertNotIn("<h2>Gene prioritisation</h2>", page)
+        self.assertNotIn("<h2>Molecular-QTL colocalisation</h2>", page)
+        self.assertLess(
+            page.index("Technical provenance and file integrity"),
+            page.index("public_source_derived_pending_human_review"),
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

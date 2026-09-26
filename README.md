@@ -19,6 +19,8 @@ The project checks that the saved records are complete and unchanged, matches re
 
 Open the [live interactive explorer](https://zinga18018.github.io/cardiometabolic-gwas-evidence-explorer/), use [the offline version](reports/index.html), or read the [real-data case study](reports/real_data_case_study.md). The explorer includes locus selection, gene-score filtering, tissue search and colocalisation filtering. No account, build system, network connection or external JavaScript library is needed to view the saved report.
 
+The exact source-derived tables are available as [65 variant rows](reports/dataset/variants.csv), [11 L2G candidate rows](reports/dataset/l2g_candidates.csv), and [44 molecular-QTL colocalisation rows](reports/dataset/molecular_qtl_colocalisations.csv). The [dataset guide](reports/dataset/README.md) defines every field. The [raw Open Targets snapshot](reports/dataset/open_targets_raw_snapshot.zip) contains the manifest and nine original API response files for this bounded five-region extract.
+
 ## Research question
 
 What source evidence was returned for candidate genes at a small set of cardiometabolic association signals, and which apparent gaps are missing data rather than negative biological evidence?
@@ -36,6 +38,8 @@ python gwas_explorer.py verify
 python gwas_explorer.py build
 python analysis/build_case_study.py
 python analysis/build_case_study.py --check
+python analysis/export_real_dataset.py
+python analysis/export_real_dataset.py --check
 python -m unittest discover -s tests -v
 ```
 
@@ -105,6 +109,8 @@ The “nearest returned candidate” comparison is limited to genes present in t
 | `reports/candidate_evidence_long.csv` | Candidate–colocalisation matches, candidate missingness, and unmatched locus colocs with tissue and method retained |
 | `reports/evidence_availability.svg` | Accessible availability chart; counts are not evidence strength |
 | `reports/case_study_metadata.json` | Input hash, source release, output hashes and analysis constraints |
+| `analysis/export_real_dataset.py` | Deterministic exporter for analysis-ready CSVs and the raw-source archive |
+| `reports/dataset/` | Three source-derived CSVs, data dictionary and raw five-region API snapshot ZIP |
 | `tests/` | Offline validation tests |
 | `.github/workflows/tests.yml` | Verification and unit-test workflow for each push and pull request |
 | `.github/workflows/pages.yml` | Deployment of the saved explorer to GitHub Pages |
