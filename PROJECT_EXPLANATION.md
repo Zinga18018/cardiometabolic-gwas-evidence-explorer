@@ -8,6 +8,24 @@ The Cardiometabolic GWAS Evidence Explorer addresses this interpretation problem
 
 The explorer presents variant posterior inclusion probability, L2G score, COLOC-PIP H4, and eCAVIAR CLPP as separate source measures. It does not combine them into a new probability, claim that a gene causes diabetes, validate the L2G model, or measure clinical usefulness. Its contribution is a transparent, inspectable workflow for comparing what evidence was returned, seeing where evidence is absent, and tracing every displayed result back to a saved public response. The five-region analysis is a bounded descriptive case study from one Finnish study and should be extended across studies, ancestries, traits, and independent validation data before drawing general conclusions.
 
+For plain-language definitions and interview preparation, see the [beginner and interview guide](BEGINNER_GUIDE.md).
+
+## Is this regression or classification?
+
+The explorer itself is **neither**. It is a deterministic post-GWAS evidence-integration and audit pipeline. It does not learn a target variable, train a model, split records into training and test sets, or predict an individual outcome.
+
+Regression, classification, and probabilistic inference appear in upstream analyses whose outputs the explorer uses:
+
+| Stage | Method type | Relationship to this repository |
+|---|---|---|
+| FinnGen type 2 diabetes GWAS | Binary-trait association testing using logistic mixed-model regression | Source analysis; not run here |
+| Open Targets fine-mapping | Probabilistic inference used to assign variant PIPs | Source analysis; not run here |
+| Open Targets L2G | Supervised gradient-boosting classification used to rank candidate genes | Source model score; displayed but not trained or validated here |
+| Open Targets colocalisation | Probabilistic comparison of shared-variant and distinct-variant explanations | Source statistics; displayed but not calculated here |
+| This explorer | Data retrieval, validation, matching, descriptive comparison, and visualisation | Work implemented in this repository |
+
+Calling the original GWAS a patient classifier would also be misleading. Logistic regression is used there to test variant associations with a binary case/control phenotype. The goal is statistical inference about variants, not predicting the diagnosis of a new patient with accuracy, recall, or AUC.
+
 ## The problem it addresses
 
 A GWAS result usually identifies a **region**, not a confirmed causal gene. Moving from that regional signal to a gene that merits further investigation is difficult for four practical reasons:

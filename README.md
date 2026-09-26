@@ -4,6 +4,8 @@
 
 A reproducible research prototype for inspecting **existing** type 2 diabetes GWAS credible sets, Locus-to-Gene (L2G) prioritisation and molecular-QTL colocalisation from the Open Targets Platform.
 
+New to genetics? Start with the [beginner and interview guide](BEGINNER_GUIDE.md). It explains genome, DNA, genes, variants, GWAS, fine-mapping, PIP, QTLs, colocalisation, L2G, H3, H4 and CLPP in plain language.
+
 **Development snapshot:** September 2026<br>
 **Initial public release:** 25 September 2026
 
@@ -22,6 +24,12 @@ A GWAS can point to a region of the genome associated with a disease, but it usu
 - **Molecular-QTL colocalisation:** whether the disease signal and a molecular signal may share an underlying variant in a particular biological context.
 
 The project checks that the saved records are complete and unchanged, matches returned molecular evidence to candidate genes, and keeps missing evidence visible. It does not select a causal gene or turn these different measures into a new combined probability.
+
+## Is this regression or classification?
+
+**This repository is neither a regression model nor a classification model.** It is a deterministic post-GWAS evidence-integration and audit pipeline. It trains no model and predicts no patient outcome.
+
+The upstream FinnGen GWAS uses logistic mixed-model association testing because type 2 diabetes is a binary case/control phenotype. The upstream Open Targets L2G model is trained as a gradient-boosting classifier and its score is used to rank candidate genes. Fine-mapping and colocalisation are probabilistic inference stages. This repository retrieves, validates, matches and visualises those existing outputs. See the [beginner guide](BEGINNER_GUIDE.md#is-this-regression-or-classification) for the full distinction and an interview answer.
 
 Open the [live interactive explorer](https://zinga18018.github.io/cardiometabolic-gwas-evidence-explorer/), use [the offline version](reports/index.html), or read the [real-data case study](reports/real_data_case_study.md). The explorer includes locus selection, gene-score filtering, tissue search and colocalisation filtering. No account, build system, network connection or external JavaScript library is needed to view the saved report.
 
@@ -102,6 +110,7 @@ The “nearest returned candidate” comparison is limited to genes present in t
 | Path | Purpose |
 |---|---|
 | `PROJECT_EXPLANATION.md` | Detailed abstract, problem statement, workflow, importance, example, limitations and interview explanation |
+| `BEGINNER_GUIDE.md` | Plain-language genetics glossary, method classification, pipeline walkthrough and defense-ready interview answers |
 | `gwas_explorer.py` | Retrieval, integrity checks, validation, evidence compilation and CLI |
 | `explorer_template.html` | Offline interactive report template |
 | `data/manifest.json` | Exact requests, response hashes, UTC times, selection rule |

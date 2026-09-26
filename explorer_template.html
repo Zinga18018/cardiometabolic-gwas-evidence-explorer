@@ -15,7 +15,7 @@
     <h1>What do five type 2 diabetes genetic signals point to?</h1>
     <p class="lede">I organised existing Open Targets evidence for five FinnGen regions to compare the variants, candidate genes and molecular signals returned for each one.</p>
     <p class="source-line" id="heroSource">Source: Open Targets 26.09 · FinnGen R12 type 2 diabetes · retrieved 25 September 2026 · five selected regions</p>
-    <nav class="jump-links" aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#how-to-read">How to read this</a><a href="#explorer">Explore the evidence</a><a href="#downloads">Download data</a><a href="#glossary">Glossary</a><a href="real_data_case_study.md">Full case study</a></nav>
+    <nav class="jump-links" aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#problem-type">Problem type</a><a href="#how-to-read">How to read this</a><a href="#explorer">Explore the evidence</a><a href="#downloads">Download data</a><a href="#glossary">Glossary</a><a href="real_data_case_study.md">Full case study</a></nav>
   </div>
 </header>
 <main>
@@ -23,7 +23,19 @@
     <h2>Project abstract</h2>
     <p class="section-intro">Genome-wide association studies can identify regions associated with type 2 diabetes, but a regional signal does not by itself identify the responsible variant or gene. This project organises existing public evidence from Open Targets release 26.09 for five selected regions from the FinnGen R12 type 2 diabetes study. It brings together 65 fine-mapped variant rows, 11 Locus-to-Gene candidates and 44 molecular-QTL colocalisation rows while preserving source identifiers, missing values, pagination checks, response hashes and quality-control warnings.</p>
     <p class="section-intro">Variant PIP, L2G score, COLOC-PIP H4 and eCAVIAR CLPP remain separate because they describe different models and cannot be treated as one causal probability. The result is an auditable explorer and downloadable dataset for examining how variant, gene-ranking and molecular evidence differ across regions. It is a bounded descriptive case study, not causal-gene validation, a clinical target ranking or an analysis of participant-level data.</p>
-    <p><a href="https://github.com/Zinga18018/cardiometabolic-gwas-evidence-explorer/blob/main/PROJECT_EXPLANATION.md">Read the full problem, workflow, importance and limitations</a></p>
+    <p><a href="https://github.com/Zinga18018/cardiometabolic-gwas-evidence-explorer/blob/main/PROJECT_EXPLANATION.md">Read the full problem, workflow, importance and limitations</a> · <a href="https://github.com/Zinga18018/cardiometabolic-gwas-evidence-explorer/blob/main/BEGINNER_GUIDE.md">Start with the beginner and interview guide</a></p>
+  </section>
+
+  <section id="problem-type">
+    <h2>Is this regression or classification?</h2>
+    <p class="section-intro"><strong>The explorer itself is neither.</strong> It is a post-GWAS evidence-integration and audit project. It does not train a model or predict whether a person has diabetes. It retrieves public aggregate results, verifies them, matches related records and presents the evidence for comparison.</p>
+    <div class="technical-grid">
+      <div><h3>The earlier GWAS stage</h3><p>Type 2 diabetes is a yes-or-no phenotype, so the upstream FinnGen GWAS uses logistic mixed-model association testing. Its goal is to test whether each variant is associated with case/control status. That is regression-based inference, not a patient classifier built by this project.</p></div>
+      <div><h3>The earlier L2G stage</h3><p>Open Targets trains a gradient-boosting classification model on positive and negative gene–credible-set pairs. It then uses the score to rank candidate genes. This explorer displays that existing score; it did not train or validate the model.</p></div>
+      <div><h3>Fine-mapping and colocalisation</h3><p>These are probabilistic inference methods. Fine-mapping narrows a GWAS signal to plausible variants. Colocalisation compares whether a disease signal and a molecular signal may share an underlying variant.</p></div>
+      <div><h3>Work performed here</h3><p>The repository performs data retrieval, response and pagination checks, deterministic region selection, genomic-distance calculation, Ensembl-ID matching, descriptive comparison and visualisation.</p></div>
+    </div>
+    <p><a href="https://github.com/Zinga18018/cardiometabolic-gwas-evidence-explorer/blob/main/BEGINNER_GUIDE.md">Read the detailed beginner guide with interview answers and claims to avoid</a></p>
   </section>
 
   <section id="downloads">
@@ -100,23 +112,36 @@
 
   <section id="glossary">
     <h2>Beginner glossary</h2>
-    <p class="section-intro">These definitions describe how the terms are used on this page.</p>
+    <p class="section-intro">Think of the genome as a library: chromosomes are volumes, DNA bases are letters, a gene is an instruction, a variant is a spelling difference and a locus is a marked neighbourhood. These definitions describe how the terms are used on this page.</p>
     <dl class="glossary">
-      <div class="glossary-row"><dt>GWAS</dt><dd>A study that scans many genetic variants to find variants associated with a trait or disease.</dd></div>
-      <div class="glossary-row"><dt>Variant</dt><dd>A difference at a DNA position. An associated variant is not automatically the biological cause.</dd></div>
+      <div class="glossary-row"><dt>DNA</dt><dd>The molecule that stores biological instructions using four bases represented as A, C, G and T.</dd></div>
+      <div class="glossary-row"><dt>Genome</dt><dd>The complete set of DNA instructions in a person or organism. This project uses public study summaries, not anyone's complete genome.</dd></div>
+      <div class="glossary-row"><dt>Chromosome</dt><dd>One long DNA molecule packaged with proteins. Chromosome numbers and positions provide genomic addresses.</dd></div>
+      <div class="glossary-row"><dt>Gene</dt><dd>A DNA region used to make a functional RNA or protein. The nearest gene to a signal is not automatically responsible for the disease.</dd></div>
+      <div class="glossary-row"><dt>Gene expression</dt><dd>The process of using a gene's information to produce RNA. Expression measurements describe how much a gene is being read in a tissue or cell context.</dd></div>
+      <div class="glossary-row"><dt>Phenotype</dt><dd>A measured trait or condition. Type 2 diabetes case/control status is binary; gene-expression level is quantitative.</dd></div>
+      <div class="glossary-row"><dt>GWAS</dt><dd>A study that tests many genetic variants across many people to find statistical associations with a trait or disease. Association does not establish causation.</dd></div>
+      <div class="glossary-row"><dt>Variant</dt><dd>A DNA sequence difference. A SNP is a one-base variant. An associated variant is not automatically the biological cause.</dd></div>
+      <div class="glossary-row"><dt>Linkage disequilibrium</dt><dd>Correlation between nearby variants that tend to be inherited together. It is one reason a GWAS often identifies a region rather than one certain variant.</dd></div>
       <div class="glossary-row"><dt>Locus</dt><dd>A region of the genome around an association signal.</dd></div>
+      <div class="glossary-row"><dt>P-value</dt><dd>How incompatible the observed result is with the model's no-association assumption. It is not the probability that a variant is causal.</dd></div>
       <div class="glossary-row"><dt>Lead variant</dt><dd>The representative variant reported for the source signal. It is not automatically causal.</dd></div>
       <div class="glossary-row"><dt>Fine-mapping</dt><dd>Statistical analysis that narrows an associated region to a smaller set of plausible variants.</dd></div>
-      <div class="glossary-row"><dt>Credible set</dt><dd>A source-defined group of variants expected to contain the causal variant under the fine-mapping model and its assumptions.</dd></div>
-      <div class="glossary-row"><dt>PIP</dt><dd>Posterior inclusion probability assigned to a variant by the source fine-mapping model. It is not a gene-causality probability.</dd></div>
+      <div class="glossary-row"><dt>Credible set</dt><dd>A group of plausible variants constructed to contain the causal variant with a stated probability, commonly 95%, under the fine-mapping model and assumptions.</dd></div>
+      <div class="glossary-row"><dt>PIP</dt><dd>Posterior inclusion probability: the source fine-mapping model's support for a variant within that signal. It is not a person's disease risk or a gene-causality probability.</dd></div>
       <div class="glossary-row"><dt>L2G score</dt><dd>Open Targets' 0–1 machine-learning score for ranking candidate genes at a GWAS signal. This project displays the score; it did not train the model.</dd></div>
-      <div class="glossary-row"><dt>QTL</dt><dd>A genetic association with a measured molecular trait, such as gene expression, splicing or protein abundance.</dd></div>
-      <div class="glossary-row"><dt>Colocalisation</dt><dd>A statistical comparison asking whether two association signals may share the same underlying variant.</dd></div>
+      <div class="glossary-row"><dt>QTL</dt><dd>Quantitative trait locus: a genomic location where genetic variation is associated with a numerical measurement such as expression, splicing or protein abundance.</dd></div>
+      <div class="glossary-row"><dt>eQTL / pQTL / sQTL</dt><dd>QTLs for gene-expression level, protein abundance and RNA splicing respectively. Their effects may depend on tissue or cell type.</dd></div>
+      <div class="glossary-row"><dt>Colocalisation</dt><dd>A statistical comparison asking whether a disease association and a molecular-QTL association may share the same underlying variant. It does not prove a causal gene.</dd></div>
+      <div class="glossary-row"><dt>H3</dt><dd>For the source COLOC-PIP method, support for both traits having signals in the region but through different variants.</dd></div>
       <div class="glossary-row"><dt>H4</dt><dd>For the source COLOC-PIP method, support for the model in which both traits associate through one shared variant.</dd></div>
       <div class="glossary-row"><dt>CLPP</dt><dd>The eCAVIAR colocalisation statistic. It is method-specific and is not interchangeable with H4.</dd></div>
       <div class="glossary-row"><dt>TSS</dt><dd>Transcription start site: the genomic position where transcription of a gene begins.</dd></div>
+      <div class="glossary-row"><dt>Ensembl ID</dt><dd>A stable database identifier for a gene. The project uses it to match candidate genes to molecular-QTL records more reliably than gene names alone.</dd></div>
+      <div class="glossary-row"><dt>API and hash</dt><dd>An API supplies structured source data. A SHA-256 hash is a digital fingerprint used here to detect changes to a saved response.</dd></div>
       <div class="glossary-row"><dt>Not returned</dt><dd>The saved source response did not contain a corresponding record or value. It does not mean zero.</dd></div>
     </dl>
+    <p><a href="https://github.com/Zinga18018/cardiometabolic-gwas-evidence-explorer/blob/main/BEGINNER_GUIDE.md">Open the expanded glossary and interview guide</a></p>
   </section>
 
   <section id="methods">

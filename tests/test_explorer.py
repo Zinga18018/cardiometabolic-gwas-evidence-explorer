@@ -118,6 +118,8 @@ class EvidenceValidationTests(unittest.TestCase):
             "What do five type 2 diabetes genetic signals point to?",
             "Yes — this is real public aggregate data.",
             "Project abstract",
+            "Is this regression or classification?",
+            "The explorer itself is neither.",
             "How to read this project",
             "Candidate genes returned by Open Targets",
             "Molecular evidence by gene and tissue",
@@ -125,6 +127,8 @@ class EvidenceValidationTests(unittest.TestCase):
             "Beginner glossary",
             "not the complete FinnGen GWAS summary-statistics download",
             "PROJECT_EXPLANATION.md",
+            "BEGINNER_GUIDE.md",
+            "Linkage disequilibrium",
         ):
             self.assertIn(required_copy, page)
         self.assertEqual(page.count('class="reading-step"'), 4)
