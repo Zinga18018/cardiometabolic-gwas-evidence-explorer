@@ -7,11 +7,21 @@ A reproducible research prototype for inspecting **existing** type 2 diabetes GW
 **Development snapshot:** September 2026<br>
 **Initial public release:** 25 September 2026
 
+## In simple terms
+
+A GWAS can point to a region of the genome associated with a disease, but it usually does not identify the responsible gene. This project examines existing Open Targets records for five selected FinnGen type 2 diabetes regions and places three kinds of clues side by side:
+
+- **Fine-mapping:** which variants remain plausible within the associated region.
+- **Locus-to-Gene (L2G):** which genes Open Targets ranks for that region.
+- **Molecular-QTL colocalisation:** whether the disease signal and a molecular signal may share an underlying variant in a particular biological context.
+
+The project checks that the saved records are complete and unchanged, matches returned molecular evidence to candidate genes, and keeps missing evidence visible. It does not select a causal gene or turn these different measures into a new combined probability.
+
 Open the [live interactive explorer](https://zinga18018.github.io/cardiometabolic-gwas-evidence-explorer/), use [the offline version](reports/index.html), or read the [real-data case study](reports/real_data_case_study.md). The explorer includes locus selection, gene-score filtering, tissue search and colocalisation filtering. No account, build system, network connection or external JavaScript library is needed to view the saved report.
 
 ## Research question
 
-What evidence supports the candidate genes at a small set of cardiometabolic association signals, and which apparent gaps are missing data rather than negative biological evidence?
+What source evidence was returned for candidate genes at a small set of cardiometabolic association signals, and which apparent gaps are missing data rather than negative biological evidence?
 
 The committed real-data case study asks a more focused question: **How do fine-mapping concentration, L2G rankings, molecular-QTL colocalisation, and evidence availability differ across five selected FinnGen R12 type 2 diabetes loci?**
 
@@ -39,7 +49,7 @@ Then visit `http://localhost:8765/reports/`.
 
 ## Real-data case study
 
-The saved `FINNGEN_R12_T2D` snapshot is a real public summary-level dataset from Open Targets, not participant-level data. The deterministic case-study build compares five selected loci using **65 variant rows, 11 returned L2G candidates, and 44 molecular-QTL colocalisation rows**.
+The saved `FINNGEN_R12_T2D` snapshot contains real public aggregate credible-set, L2G, and colocalisation records from Open Targets, not participant-level data or a complete GWAS summary-statistics file. The deterministic case-study build compares five selected loci using **65 variant rows, 11 returned L2G candidates, and 44 molecular-QTL colocalisation rows**.
 
 The analysis preserves PIP, L2G, H4, and CLPP as separate source measures. It matches colocalisation records to candidates using the source Ensembl gene identifiers, retains unmatched records and missing values, and carries every source quality-control warning into the outputs. It does not create a combined score or posterior.
 
@@ -74,7 +84,7 @@ The “nearest returned candidate” comparison is limited to genes present in t
 - Every selected locus in the included snapshot carries the exact source `qualityControls` text `Study has quality control flag(s)`. The cached API response provides no additional detail, so this project does not infer the flag's meaning or effect.
 - No pLOF burden, Perturb-seq, gene network or therapeutic-actionability model is implemented.
 - Public-derived records remain `public_source_derived_pending_human_review`.
-- The sample contains strong signals from one Finnish study. It cannot establish model performance or generalise across ancestries.
+- The sample contains loci selected from the smallest reported p-values in one Finnish study. It cannot establish model performance or generalise across ancestries.
 - Source study counts and discovery-sample annotations are preserved separately, even when their denominators differ.
 
 ## Layout
@@ -102,7 +112,7 @@ The “nearest returned candidate” comparison is limited to genes present in t
 
 ## Fit with Bayesian target-prioritisation research
 
-This is a practical foundation for the variant-to-gene portion of a larger framework: source provenance, uncertain gene mappings, tissue-specific evidence and honest missingness. The next research step would be a clearly specified probabilistic model with independent validation, assumptions about dependent evidence, and evaluation across studies. The current project does not implement that full framework.
+This is a data and provenance foundation for studying the variant-to-gene portion of a larger framework: source provenance, uncertain gene mappings, tissue-specific evidence and honest missingness. The next research step would be a clearly specified probabilistic model with independent validation, assumptions about dependent evidence, and evaluation across studies. The current project does not implement that full framework.
 
 ## Sources and data licence
 

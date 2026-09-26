@@ -2,6 +2,12 @@
 
 **Status:** `public_source_derived_pending_human_review`
 
+## In simple terms
+
+A GWAS signal points to a region of the genome, but it usually does not identify the responsible gene. This case study inspects existing Open Targets records for five selected type 2 diabetes regions. Fine-mapping shows which variants remain plausible, L2G ranks returned candidate genes, and molecular-QTL colocalisation asks whether a disease signal and a molecular signal may share an underlying variant.
+
+The analysis places those clues side by side, records where evidence was not returned, and preserves source quality-control warnings. It does not choose a causal gene or combine the measures into a new probability.
+
 ## Research question
 
 How do fine-mapping concentration, Locus-to-Gene rankings, molecular-QTL colocalisation, and evidence availability differ across five selected FinnGen R12 type 2 diabetes loci?
