@@ -52,9 +52,14 @@ def digest(data):
     return hashlib.sha256(data).hexdigest()
 
 
-def write_json(path, value):
+def write_text_lf(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, indent=2, ensure_ascii=False, allow_nan=False) + "\n", encoding="utf-8")
+    with path.open("w", encoding="utf-8", newline="\n") as file:
+        file.write(value)
+
+
+def write_json(path, value):
+    write_text_lf(path, json.dumps(value, indent=2, ensure_ascii=False, allow_nan=False) + "\n")
 
 
 def parse_graphql(raw):
@@ -302,7 +307,7 @@ def evidence_csv(evidence, path):
               "coloc_status", "candidate_list_complete", "coloc_list_complete", "source_quality_controls",
               "source_url", "status"]
     with path.open("w", newline="", encoding="utf-8") as file:
-        writer = csv.DictWriter(file, fieldnames=fields)
+        writer = csv.DictWriter(file, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         for locus in evidence["loci"]:
             for candidate in locus["candidates"]["rows"]:
@@ -342,10 +347,10 @@ def build(snapshot, report_dir):
     report_dir.mkdir(parents=True, exist_ok=True)
     write_json(report_dir / "evidence.json", evidence)
     evidence_csv(evidence, report_dir / "candidate_evidence.csv")
-    (report_dir / "audit_report.md").write_text(report_markdown(evidence), encoding="utf-8")
+    write_text_lf(report_dir / "audit_report.md", report_markdown(evidence))
     template = Path(__file__).with_name("explorer_template.html").read_text(encoding="utf-8")
     encoded = json.dumps(evidence, ensure_ascii=True, allow_nan=False).replace("<", "\\u003c")
-    (report_dir / "index.html").write_text(template.replace("__EVIDENCE_JSON__", encoded), encoding="utf-8")
+    write_text_lf(report_dir / "index.html", template.replace("__EVIDENCE_JSON__", encoded))
     summary = {"study": evidence["study"]["id"], "loci": len(evidence["loci"]),
                "variants": sum(x["variants"]["fetched_count"] for x in evidence["loci"]),
                "l2g_candidates": sum(x["candidates"]["fetched_count"] for x in evidence["loci"]),

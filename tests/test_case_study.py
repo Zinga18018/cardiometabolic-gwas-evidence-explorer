@@ -23,7 +23,7 @@ class RealDataCaseStudyTests(unittest.TestCase):
     def test_pinned_snapshot_and_counts(self):
         self.assertEqual(
             self.input_hash,
-            "95678e4be83dfdc690b486e85d5658e913865620b6b6fbcb5cc613218d727562",
+            "49e73e407ba8a062c7b0a32f145233d24505dd381e675c550e5ba76267f5c821",
         )
         self.assertEqual(self.evidence["study"]["id"], "FINNGEN_R12_T2D")
         self.assertEqual(
