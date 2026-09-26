@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-09-25T14:04:44.269445Z",
+  "endpoint": "https://api.platform.opentargets.org/api/v4/graphql",
+  "python_version": "3.14.7",
+  "requests": [
+    {
+      "key": "meta_start",
+      "file": "raw/meta_start.json",
+      "request": {
+        "query": "{meta{name dataVersion{year month iteration} apiVersion{x y z}}}",
+        "variables": {}
+      },
+      "request_sha256": "3afba251a3f4118d124848c7d5e198d1ad846bd5db90492e5e34183039715fad",
+      "response_sha256": "b03b393ed43bb08c12cd0a9562bbf4b23780561f8fe3e9e11abddf8fffd44223",
+      "bytes": 163,
+      "http_status": 200,
+      "requested_utc": "2026-09-25T14:04:44.271101Z",
+      "retrieved_utc": "2026-09-25T14:04:44.674868Z",
+      "source_url": "https://api.platform.opentargets.org/api/v4/graphql"
+    },
+    {
+      "key": "schema",
+      "file": "raw/schema.json",
+      "request": {
+        "query": "{__schema{types{kind name fields{name type{kind name ofType{kind name ofType{kind name}}}} enumValues{name}}}}",
+        "variables": {}
+      },
+      "request_sha256": "178a157147bae69460ee97f7bc9fd7eff9bc7ba10c383885167d8c776383ac7c",
+      "response_sha256": "d4795a07233dc9bf75f382baa5c309ec678ddf06d572d6cbd14db227d7791128",
+      "bytes": 111327,
+      "http_status": 200,
+      "requested_utc": "2026-09-25T14:04:44.675445Z",
+      "retrieved_utc": "2026-09-25T14:04:45.058015Z",
+      "source_url": "https://api.platform.opentargets.org/api/v4/graphql"
+    },
+    {
+      "key": "discovery_0",
+      "file": "raw/discovery_0.json",
+      "request": {
+        "query": "query($study:String!,$index:Int!){study(studyId:$study){\n id traitFromSource nSamples nCases nControls projectId hasSumstats\n diseases{id name} discoverySamples{sampleSize ancestry}\n credibleSets(page:{size:500,index:$index}){count rows{\n studyLocusId chromosome position pValueMantissa pValueExponent\n finemappingMethod confidence variant{id rsIds}}}}}",
+        "variables": {
+          "study": "FINNGEN_R12_T2D",
+          "index": 0
+        }
+      },
+      "request_sha256": "86d51082dc06c03a4e02811ba0df8fb7f8de8279517ce772b0b913a41f043d02",
+      "response_sha256": "87eeb4b423544c33dd6dfea69d8d324a3d741b3ef9e0b61f6f47291979493d4e",
+      "bytes": 109020,
+      "http_status": 200,
+      "requested_utc": "2026-09-25T14:04:45.060137Z",
+      "retrieved_utc": "2026-09-25T14:04:45.613802Z",
+      "source_url": "https://api.platform.opentargets.org/api/v4/graphql"
+    },
+    {
+      "key": "locus_83b58cde6c7d78f3211dce1b35b83674_0",
+      "file": "raw/locus_83b58cde6c7d78f3211dce1b35b83674_0.json",
+      "request": {
+        "query": "query($id:String!,$index:Int!){credibleSet(studyLocusId:$id){\n studyLocusId studyId chromosome position pValueMantissa pValueExponent\n confidence finemappingMethod qualityControls variant{id rsIds}\n l2GPredictions(page:{size:500,index:$index}){count rows{score\n target{id approvedSymbol biotype canonicalTranscript{start end strand chromosome}}\n features{name value shapValue}}}\n locus(page:{size:500,index:$index}){count rows{posteriorProbability is95CredibleSet\n is99CredibleSet beta standardError variant{id rsIds chromosome position}}}\n colocalisation(studyTypes:[eqtl,pqtl,sqtl,sceqtl,scpqtl,scsqtl,tuqtl,sctuqtl],\n page:{size:500,index:$index}){count rows{studyLocusId rightStudyType h3 h4 clpp\n colocalisationMethod numberColocalisingVariants betaRatioSignAverage\n otherStudyLocus{studyLocusId qtlGeneId study{id studyType\n target{id approvedSymbol} biosample{biosampleId biosampleName}}}}}}}",
+        "variables": {
+          "id": "83b58cde6c7d78f3211dce1b35b83674",
+          "index": 0
+        }
+      },
+      "request_sha256": "4a40b287bb5a5568d64c191b02b287ba2dce9204ea63a188eef31eeb2e4786c1",
+      "response_sha256": "586d22c9966e6c38b69aaeed458fc110d831046e9858eae3026e054c2d0dadaa",
+      "bytes": 3519,
+      "http_status": 200,
+      "requested_utc": "2026-09-25T14:04:45.615789Z",
+      "retrieved_utc": "2026-09-25T14:04:45.875713Z",
+      "source_url": "https://api.platform.opentargets.org/api/v4/graphql"
+    },
+    {
+      "key": "locus_25c86693e33ae778acf27c3255c2925f_0",
+      "file": "raw/locus_25c86693e33ae778acf27c3255c2925f_0.json",
+      "request": {
+        "query": "query($id:String!,$index:Int!){credibleSet(studyLocusId:$id){\n studyLocusId studyId chromosome position pValueMantissa pValueExponent\n confidence finemappingMethod qualityControls variant{id rsIds}\n l2GPredictions(page:{size:500,index:$index}){count rows{score\n target{id approvedSymbol biotype canonicalTranscript{start end strand chromosome}}\n features{name value shapValue}}}\n locus(page:{size:500,index:$index}){count rows{posteriorProbability is95CredibleSet\n is99CredibleSet beta standardError variant{id rsIds chromosome position}}}\n colocalisation(studyTypes:[eqtl,pqtl,sqtl,sceqtl,scpqtl,scsqtl,tuqtl,sctuqtl],\n page:{size:500,index:$index}){count rows{studyLocusId rightStudyType h3 h4 clpp\n colocalisationMethod numberColocalisingVariants betaRatioSignAverage\n otherStudyLocus{studyLocusId qtlGeneId study{id studyType\n target{id approvedSymbol} biosample{biosampleId biosampleName}}}}}}}",
+        "variables": {
+          "id": "25c86693e33ae778acf27c3255c2925f",
+          "index": 0
+        }
+      },
+      "request_sha256": "3534727036f3ce95bfa63f3a6f0e06317409298ea69b66b93d049353970c0c78",
+      "response_sha256": "28749484e9bd72490d5e52bcee681ec9b7c64b910de13f120e87f6e5dc6ecf9f",
+      "bytes": 26345,
+      "http_status": 200,
+      "requested_utc": "2026-09-25T14:04:45.876891Z",
+      "retrieved_utc": "2026-09-25T14:04:46.148102Z",
+      "source_url": "https://api.platform.opentargets.org/api/v4/graphql"
+    },
+    {
+      "key": "locus_911b5c2383e73877f5d1a394a5ed728c_0",
+      "file": "raw/locus_911b5c2383e73877f5d1a394a5ed728c_0.json",
+      "request": {
+        "query": "query($id:String!,$index:Int!){credibleSet(studyLocusId:$id){\n studyLocusId studyId chromosome position pValueMantissa pValueExponent\n confidence finemappingMethod qualityControls variant{id rsIds}\n l2GPredictions(page:{size:500,index:$index}){count rows{score\n target{id approvedSymbol biotype canonicalTranscript{start end strand chromosome}}\n features{name value shapValue}}}\n locus(page:{size:500,index:$index}){count rows{posteriorProbability is95CredibleSet\n is99CredibleSet beta standardError variant{id rsIds chromosome position}}}\n colocalisation(studyTypes:[eqtl,pqtl,sqtl,sceqtl,scpqtl,scsqtl,tuqtl,sctuqtl],\n page:{size:500,index:$index}){count rows{studyLocusId rightStudyType h3 h4 clpp\n colocalisationMethod numberColocalisingVariants betaRatioSignAverage\n otherStudyLocus{studyLocusId qtlGeneId study{id studyType\n target{id approvedSymbol} biosample{biosampleId biosampleName}}}}}}}",
+        "variables": {
+          "id": "911b5c2383e73877f5d1a394a5ed728c",
+          "index": 0
+        }
+      },
+      "request_sha256": "09a9491c1598fc9bdf533d7e43af124dc1f64e50d59a7d2f3c6802227ce07341",
+      "response_sha256": "84882b2d5b7ff3a59a9d84180f78016011c7b35cde8958d1f1fe294ec2c28c3c",
+      "bytes": 23467,
+      "http_status": 200,
+      "requested_utc": "2026-09-25T14:04:46.148840Z",
+      "retrieved_utc": "2026-09-25T14:04:46.434440Z",
+      "source_url": "https://api.platform.opentargets.org/api/v4/graphql"
+    },
+    {
+      "key": "locus_f26ca97da3415b5a097fdf85b538997e_0",
+      "file": "raw/locus_f26ca97da3415b5a097fdf85b538997e_0.json",
+      "request": {
+        "query": "query($id:String!,$index:Int!){credibleSet(studyLocusId:$id){\n studyLocusId studyId chromosome position pValueMantissa pValueExponent\n confidence finemappingMethod qualityControls variant{id rsIds}\n l2GPredictions(page:{size:500,index:$index}){count rows{score\n target{id approvedSymbol biotype canonicalTranscript{start end strand chromosome}}\n features{name value shapValue}}}\n locus(page:{size:500,index:$index}){count rows{posteriorProbability is95CredibleSet\n is99CredibleSet beta standardError variant{id rsIds chromosome position}}}\n colocalisation(studyTypes:[eqtl,pqtl,sqtl,sceqtl,scpqtl,scsqtl,tuqtl,sctuqtl],\n page:{size:500,index:$index}){count rows{studyLocusId rightStudyType h3 h4 clpp\n colocalisationMethod numberColocalisingVariants betaRatioSignAverage\n otherStudyLocus{studyLocusId qtlGeneId study{id studyType\n target{id approvedSymbol} biosample{biosampleId biosampleName}}}}}}}",
+        "variables": {
+          "id": "f26ca97da3415b5a097fdf85b538997e",
+          "index": 0
+        }
+      },
+      "request_sha256": "b6d124a2197e36b7b4a690790886d175ca92558a3e336c3f3d70eb25f34006ad",
+      "response_sha256": "f6d8888082a622158543244911d48d7e9b3727a4b1b2ad64468144ba917efb0b",
+      "bytes": 12158,
+      "http_status": 200,
+      "requested_utc": "2026-09-25T14:04:46.435446Z",
+      "retrieved_utc": "2026-09-25T14:04:46.670217Z",
+      "source_url": "https://api.platform.opentargets.org/api/v4/graphql"
+    },
+    {
+      "key": "locus_8b114fb0fc75e8f34eece8cee51dd41f_0",
+      "file": "raw/locus_8b114fb0fc75e8f34eece8cee51dd41f_0.json",
+      "request": {
+        "query": "query($id:String!,$index:Int!){credibleSet(studyLocusId:$id){\n studyLocusId studyId chromosome position pValueMantissa pValueExponent\n confidence finemappingMethod qualityControls variant{id rsIds}\n l2GPredictions(page:{size:500,index:$index}){count rows{score\n target{id approvedSymbol biotype canonicalTranscript{start end strand chromosome}}\n features{name value shapValue}}}\n locus(page:{size:500,index:$index}){count rows{posteriorProbability is95CredibleSet\n is99CredibleSet beta standardError variant{id rsIds chromosome position}}}\n colocalisation(studyTypes:[eqtl,pqtl,sqtl,sceqtl,scpqtl,scsqtl,tuqtl,sctuqtl],\n page:{size:500,index:$index}){count rows{studyLocusId rightStudyType h3 h4 clpp\n colocalisationMethod numberColocalisingVariants betaRatioSignAverage\n otherStudyLocus{studyLocusId qtlGeneId study{id studyType\n target{id approvedSymbol} biosample{biosampleId biosampleName}}}}}}}",
+        "variables": {
+          "id": "8b114fb0fc75e8f34eece8cee51dd41f",
+          "index": 0
+        }
+      },
+      "request_sha256": "84d0964edbd310b32ba91bffa33a244b86f55d408a28ab0753ae35e6d4a3128d",
+      "response_sha256": "d2ca819f4b7a7f50ce2e1591db25a886f8809dbdeebecb5613e870b61cfa278d",
+      "bytes": 7078,
+      "http_status": 200,
+      "requested_utc": "2026-09-25T14:04:46.671263Z",
+      "retrieved_utc": "2026-09-25T14:04:46.924819Z",
+      "source_url": "https://api.platform.opentargets.org/api/v4/graphql"
+    },
+    {
+      "key": "meta_end",
+      "file": "raw/meta_end.json",
+      "request": {
+        "query": "{meta{name dataVersion{year month iteration} apiVersion{x y z}}}",
+        "variables": {}
+      },
+      "request_sha256": "3afba251a3f4118d124848c7d5e198d1ad846bd5db90492e5e34183039715fad",
+      "response_sha256": "b03b393ed43bb08c12cd0a9562bbf4b23780561f8fe3e9e11abddf8fffd44223",
+      "bytes": 163,
+      "http_status": 200,
+      "requested_utc": "2026-09-25T14:04:46.925462Z",
+      "retrieved_utc": "2026-09-25T14:04:47.211295Z",
+      "source_url": "https://api.platform.opentargets.org/api/v4/graphql"
+    }
+  ],
+  "study_id": "FINNGEN_R12_T2D",
+  "selection": {
+    "count": 5,
+    "rule": "ascending p-value; ties studyLocusId; same-chromosome lead variants at least 1000000 bp apart",
+    "min_separation_bp": 1000000,
+    "selected_ids": [
+      "83b58cde6c7d78f3211dce1b35b83674",
+      "25c86693e33ae778acf27c3255c2925f",
+      "911b5c2383e73877f5d1a394a5ed728c",
+      "f26ca97da3415b5a097fdf85b538997e",
+      "8b114fb0fc75e8f34eece8cee51dd41f"
+    ],
+    "discovery_count": 368
+  },
+  "completed_utc": "2026-09-25T14:04:47.212407Z"
+}
