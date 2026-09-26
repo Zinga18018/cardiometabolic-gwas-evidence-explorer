@@ -12,4 +12,5 @@ jobs:
         with:
           python-version: '3.12'
       - run: python gwas_explorer.py verify
+      - run: python analysis/build_case_study.py --check
       - run: python -m unittest discover -s tests -v

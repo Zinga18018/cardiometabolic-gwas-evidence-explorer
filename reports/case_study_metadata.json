@@ -1,0 +1,52 @@
+{
+  "analysis_type": "descriptive_real_data_case_study",
+  "candidate_match_rule": "otherStudyLocus.qtlGeneId OR otherStudyLocus.study.target.id equals candidate target.id",
+  "counts": {
+    "candidate_long_rows": 53,
+    "candidate_matched_colocalisation_rows": 13,
+    "colocalisation_rows": 44,
+    "l2g_candidates": 11,
+    "loci": 5,
+    "unmatched_colocalisation_rows": 31,
+    "variant_rows": 65
+  },
+  "input": {
+    "path": "reports/evidence.json",
+    "sha256": "95678e4be83dfdc690b486e85d5658e913865620b6b6fbcb5cc613218d727562"
+  },
+  "output_sha256": {
+    "candidate_evidence_long.csv": "8fc70aa7e6c16ac4af5b05a08919264eba89269b4f57cfc673b46e84680f54fd",
+    "evidence_availability.svg": "2010c67c1b26cad55764329ec4ed7346c133b61b2e98ceb49c99bf16705d397b",
+    "locus_summary.csv": "3c046d5895006bc7e80c78584794d46cf53a9614532087afd451ee218af3c83c",
+    "real_data_case_study.md": "9b5cc0187af3d00350163c522a9eb804dedbe9fd5f37c818c7503bf9a503f804"
+  },
+  "principles": {
+    "composite_score_created": false,
+    "missing_values_converted_to_zero": false,
+    "posterior_created": false,
+    "source_metrics_kept_separate": [
+      "PIP",
+      "L2G",
+      "H3",
+      "H4",
+      "CLPP"
+    ]
+  },
+  "schema_version": 1,
+  "source": {
+    "api_version": {
+      "x": "26",
+      "y": "9",
+      "z": "0"
+    },
+    "coordinate_build": "GRCh38",
+    "data_version": {
+      "iteration": null,
+      "month": "09",
+      "year": "26"
+    },
+    "retrieved_utc": "2026-09-25T14:04:47.212407Z",
+    "study_id": "FINNGEN_R12_T2D"
+  },
+  "status": "public_source_derived_pending_human_review"
+}

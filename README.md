@@ -7,11 +7,13 @@ A reproducible research prototype for inspecting **existing** type 2 diabetes GW
 **Development snapshot:** September 2026<br>
 **Initial public release:** 25 September 2026
 
-Open the [live interactive explorer](https://zinga18018.github.io/cardiometabolic-gwas-evidence-explorer/), use [the offline version](reports/index.html), or read [the audit report](reports/audit_report.md). The explorer includes locus selection, gene-score filtering, tissue search and colocalisation filtering. No account, build system, network connection or external JavaScript library is needed to view the saved report.
+Open the [live interactive explorer](https://zinga18018.github.io/cardiometabolic-gwas-evidence-explorer/), use [the offline version](reports/index.html), or read the [real-data case study](reports/real_data_case_study.md). The explorer includes locus selection, gene-score filtering, tissue search and colocalisation filtering. No account, build system, network connection or external JavaScript library is needed to view the saved report.
 
 ## Research question
 
 What evidence supports the candidate genes at a small set of cardiometabolic association signals, and which apparent gaps are missing data rather than negative biological evidence?
+
+The committed real-data case study asks a more focused question: **How do fine-mapping concentration, L2G rankings, molecular-QTL colocalisation, and evidence availability differ across five selected FinnGen R12 type 2 diabetes loci?**
 
 This project audits public outputs. It does **not** run a new GWAS, fine mapping, Mendelian randomisation or a clinical drug-target validation. PIPs, L2G scores and colocalisation statistics originate from Open Targets. Only the retrieval, validation, derived distances and presentation are implemented here.
 
@@ -22,6 +24,8 @@ Requirements: Python 3.11 or later. Standard library only; no packages to instal
 ```bash
 python gwas_explorer.py verify
 python gwas_explorer.py build
+python analysis/build_case_study.py
+python analysis/build_case_study.py --check
 python -m unittest discover -s tests -v
 ```
 
@@ -32,6 +36,14 @@ python -m http.server 8765
 ```
 
 Then visit `http://localhost:8765/reports/`.
+
+## Real-data case study
+
+The saved `FINNGEN_R12_T2D` snapshot is a real public summary-level dataset from Open Targets, not participant-level data. The deterministic case-study build compares five selected loci using **65 variant rows, 11 returned L2G candidates, and 44 molecular-QTL colocalisation rows**.
+
+The analysis preserves PIP, L2G, H4, and CLPP as separate source measures. It matches colocalisation records to candidates using the source Ensembl gene identifiers, retains unmatched records and missing values, and carries every source quality-control warning into the outputs. It does not create a combined score or posterior.
+
+Read the [case-study report](reports/real_data_case_study.md), inspect the [locus summary](reports/locus_summary.csv) and [candidate-level long table](reports/candidate_evidence_long.csv), or view the [evidence-availability figure](reports/evidence_availability.svg). The counts in the figure describe returned records rather than evidence strength. All derived records remain `public_source_derived_pending_human_review`.
 
 ## Fetch a new snapshot
 
@@ -77,6 +89,12 @@ The “nearest returned candidate” comparison is limited to genes present in t
 | `reports/candidate_evidence.csv` | One row per locus–gene candidate; blanks retain missing values |
 | `reports/audit_report.md` | Actual run counts and interpretation boundaries |
 | `reports/run_summary.json` | Machine-readable run totals |
+| `analysis/build_case_study.py` | Deterministic real-data case-study builder and validation |
+| `reports/real_data_case_study.md` | Five-locus descriptive analysis with explicit claim boundaries |
+| `reports/locus_summary.csv` | One row per selected locus; source measures remain separate |
+| `reports/candidate_evidence_long.csv` | Candidate–colocalisation matches, candidate missingness, and unmatched locus colocs with tissue and method retained |
+| `reports/evidence_availability.svg` | Accessible availability chart; counts are not evidence strength |
+| `reports/case_study_metadata.json` | Input hash, source release, output hashes and analysis constraints |
 | `tests/` | Offline validation tests |
 | `.github/workflows/tests.yml` | Verification and unit-test workflow for each push and pull request |
 | `.github/workflows/pages.yml` | Deployment of the saved explorer to GitHub Pages |

@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="545" viewBox="0 0 1120 545" role="img" aria-labelledby="title desc">
+<title id="title">Evidence availability across five FinnGen type 2 diabetes loci</title>
+<desc id="desc">A table-like chart of returned variant, L2G, total colocalisation, candidate-matched colocalisation, and source quality-control records. Counts describe availability, not evidence strength.</desc>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>text{font-family:Arial,sans-serif;fill:#111827}.title{font-size:22px;font-weight:700}.subtitle{font-size:13px;fill:#4b5563}.head{font-size:12px;font-weight:700}.label{font-size:13px;font-weight:700}.small{font-size:11px;fill:#4b5563}.value{font-size:16px;font-weight:700}.foot{font-size:12px;fill:#374151}</style>
+<text id="title-text" x="36" y="38" class="title">Evidence availability across five FinnGen T2D loci</text>
+<text x="36" y="64" class="subtitle">Counts show returned public-source records. They do not measure biological support or causal strength.</text>
+<text x="352.5" y="112" text-anchor="middle" class="head">Variant rows</text>
+<text x="507.5" y="112" text-anchor="middle" class="head">L2G candidates</text>
+<text x="662.5" y="112" text-anchor="middle" class="head">All QTL colocs</text>
+<text x="817.5" y="112" text-anchor="middle" class="head">Matched QTL colocs</text>
+<text x="972.5" y="112" text-anchor="middle" class="head">Source QC flags</text>
+<text x="36" y="171" class="label">TCF7L2 · 10_112998590_C_T</text>
+<text x="36" y="189" class="small">study locus 83b58cde6c…</text>
+<rect x="282" y="150" width="141" height="42" rx="7" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="352.5" y="177" text-anchor="middle" class="value">1</text>
+<rect x="437" y="150" width="141" height="42" rx="7" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="507.5" y="177" text-anchor="middle" class="value">1</text>
+<rect x="592" y="150" width="141" height="42" rx="7" fill="#f3f4f6" stroke="#d1d5db"/>
+<text x="662.5" y="177" text-anchor="middle" class="value">0</text>
+<rect x="747" y="150" width="141" height="42" rx="7" fill="#f3f4f6" stroke="#d1d5db"/>
+<text x="817.5" y="177" text-anchor="middle" class="value">0</text>
+<rect x="902" y="150" width="141" height="42" rx="7" fill="#fef3c7" stroke="#f59e0b"/>
+<text x="972.5" y="177" text-anchor="middle" class="value">1</text>
+<text x="36" y="225" class="label">CCND2 · 12_4275678_T_G</text>
+<text x="36" y="243" class="small">study locus 25c86693e3…</text>
+<rect x="282" y="204" width="141" height="42" rx="7" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="352.5" y="231" text-anchor="middle" class="value">1</text>
+<rect x="437" y="204" width="141" height="42" rx="7" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="507.5" y="231" text-anchor="middle" class="value">2</text>
+<rect x="592" y="204" width="141" height="42" rx="7" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="662.5" y="231" text-anchor="middle" class="value">38</text>
+<rect x="747" y="204" width="141" height="42" rx="7" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="817.5" y="231" text-anchor="middle" class="value">11</text>
+<rect x="902" y="204" width="141" height="42" rx="7" fill="#fef3c7" stroke="#f59e0b"/>
+<text x="972.5" y="231" text-anchor="middle" class="value">1</text>
+<text x="36" y="279" class="label">FTO · 16_53793567_A_G</text>
+<text x="36" y="297" class="small">study locus 911b5c2383…</text>
+<rect x="282" y="258" width="141" height="42" rx="7" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="352.5" y="285" text-anchor="middle" class="value">56</text>
+<rect x="437" y="258" width="141" height="42" rx="7" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="507.5" y="285" text-anchor="middle" class="value">3</text>
+<rect x="592" y="258" width="141" height="42" rx="7" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="662.5" y="285" text-anchor="middle" class="value">2</text>
+<rect x="747" y="258" width="141" height="42" rx="7" fill="#f3f4f6" stroke="#d1d5db"/>
+<text x="817.5" y="285" text-anchor="middle" class="value">0</text>
+<rect x="902" y="258" width="141" height="42" rx="7" fill="#fef3c7" stroke="#f59e0b"/>
+<text x="972.5" y="285" text-anchor="middle" class="value">1</text>
+<text x="36" y="333" class="label">HNF4A · 20_44354839_C_CA</text>
+<text x="36" y="351" class="small">study locus f26ca97da3…</text>
+<rect x="282" y="312" width="141" height="42" rx="7" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="352.5" y="339" text-anchor="middle" class="value">1</text>
+<rect x="437" y="312" width="141" height="42" rx="7" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="507.5" y="339" text-anchor="middle" class="value">4</text>
+<rect x="592" y="312" width="141" height="42" rx="7" fill="#f3f4f6" stroke="#d1d5db"/>
+<text x="662.5" y="339" text-anchor="middle" class="value">0</text>
+<rect x="747" y="312" width="141" height="42" rx="7" fill="#f3f4f6" stroke="#d1d5db"/>
+<text x="817.5" y="339" text-anchor="middle" class="value">0</text>
+<rect x="902" y="312" width="141" height="42" rx="7" fill="#fef3c7" stroke="#f59e0b"/>
+<text x="972.5" y="339" text-anchor="middle" class="value">1</text>
+<text x="36" y="387" class="label">CDKAL1 · 6_20703721_A_G</text>
+<text x="36" y="405" class="small">study locus 8b114fb0fc…</text>
+<rect x="282" y="366" width="141" height="42" rx="7" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="352.5" y="393" text-anchor="middle" class="value">6</text>
+<rect x="437" y="366" width="141" height="42" rx="7" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="507.5" y="393" text-anchor="middle" class="value">1</text>
+<rect x="592" y="366" width="141" height="42" rx="7" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="662.5" y="393" text-anchor="middle" class="value">4</text>
+<rect x="747" y="366" width="141" height="42" rx="7" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="817.5" y="393" text-anchor="middle" class="value">2</text>
+<rect x="902" y="366" width="141" height="42" rx="7" fill="#fef3c7" stroke="#f59e0b"/>
+<text x="972.5" y="393" text-anchor="middle" class="value">1</text>
+<rect x="36" y="440" width="16" height="16" rx="3" fill="#dbeafe" stroke="#60a5fa"/>
+<text x="60" y="453" class="foot">one or more records returned</text>
+<rect x="250" y="440" width="16" height="16" rx="3" fill="#f3f4f6" stroke="#d1d5db"/>
+<text x="274" y="453" class="foot">no record returned</text>
+<rect x="430" y="440" width="16" height="16" rx="3" fill="#fef3c7" stroke="#f59e0b"/>
+<text x="454" y="453" class="foot">unresolved source QC flag</text>
+<text x="36" y="490" class="foot">Status: public_source_derived_pending_human_review</text>
+</svg>
