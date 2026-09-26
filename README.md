@@ -7,6 +7,12 @@ A reproducible research prototype for inspecting **existing** type 2 diabetes GW
 **Development snapshot:** September 2026<br>
 **Initial public release:** 25 September 2026
 
+## Abstract
+
+Genome-wide association studies can identify regions associated with type 2 diabetes, but a regional signal does not by itself identify the responsible variant or gene. This project organises existing public evidence from Open Targets release 26.09 for five selected regions from the FinnGen R12 type 2 diabetes study. It brings together 65 fine-mapped variant rows, 11 Locus-to-Gene candidates, and 44 molecular-QTL colocalisation rows while preserving source identifiers, missing values, pagination checks, response hashes, and quality-control warnings. Variant PIP, L2G score, COLOC-PIP H4, and eCAVIAR CLPP remain separate because they describe different models and cannot be treated as one causal probability. The result is an auditable explorer and downloadable dataset for examining how variant, gene-ranking, and molecular evidence differ across regions. It is a bounded descriptive case study, not causal-gene validation, a clinical target ranking, or an analysis of participant-level data.
+
+Read the detailed [problem, workflow, importance, and limitations](PROJECT_EXPLANATION.md).
+
 ## In simple terms
 
 A GWAS can point to a region of the genome associated with a disease, but it usually does not identify the responsible gene. This project examines existing Open Targets records for five selected FinnGen type 2 diabetes regions and places three kinds of clues side by side:
@@ -95,6 +101,7 @@ The “nearest returned candidate” comparison is limited to genes present in t
 
 | Path | Purpose |
 |---|---|
+| `PROJECT_EXPLANATION.md` | Detailed abstract, problem statement, workflow, importance, example, limitations and interview explanation |
 | `gwas_explorer.py` | Retrieval, integrity checks, validation, evidence compilation and CLI |
 | `explorer_template.html` | Offline interactive report template |
 | `data/manifest.json` | Exact requests, response hashes, UTC times, selection rule |

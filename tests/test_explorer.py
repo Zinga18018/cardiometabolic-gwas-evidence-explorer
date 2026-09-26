@@ -117,12 +117,14 @@ class EvidenceValidationTests(unittest.TestCase):
         for required_copy in (
             "What do five type 2 diabetes genetic signals point to?",
             "Yes — this is real public aggregate data.",
+            "Project abstract",
             "How to read this project",
             "Candidate genes returned by Open Targets",
             "Molecular evidence by gene and tissue",
             "Variants retained after fine-mapping",
             "Beginner glossary",
             "not the complete FinnGen GWAS summary-statistics download",
+            "PROJECT_EXPLANATION.md",
         ):
             self.assertIn(required_copy, page)
         self.assertEqual(page.count('class="reading-step"'), 4)
