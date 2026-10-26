@@ -2,7 +2,7 @@
 
 [![tests](https://github.com/Zinga18018/cardiometabolic-gwas-evidence-explorer/actions/workflows/tests.yml/badge.svg)](https://github.com/Zinga18018/cardiometabolic-gwas-evidence-explorer/actions/workflows/tests.yml)
 
-A reproducible research prototype for inspecting **existing** type 2 diabetes GWAS credible sets, Locus-to-Gene (L2G) prioritisation and molecular-QTL colocalisation from the Open Targets Platform.
+An offline explorer that puts existing genetic evidence for five type 2 diabetes regions side by side. It retrieves and checks public Open Targets records, keeps their source warnings and missing values, and lets readers inspect what each kind of evidence can support.
 
 New to genetics? Start with the [beginner and interview guide](BEGINNER_GUIDE.md). It explains genome, DNA, genes, variants, GWAS, fine-mapping, PIP, QTLs, colocalisation, L2G, H3, H4 and CLPP in plain language.
 
@@ -34,6 +34,12 @@ The upstream FinnGen GWAS uses logistic mixed-model association testing because 
 Open the [live interactive explorer](https://zinga18018.github.io/cardiometabolic-gwas-evidence-explorer/), use [the offline version](reports/index.html), or read the [real-data case study](reports/real_data_case_study.md). The explorer includes locus selection, gene-score filtering, tissue search and colocalisation filtering. No account, build system, network connection or external JavaScript library is needed to view the saved report.
 
 The exact source-derived tables are available as [65 variant rows](reports/dataset/variants.csv), [11 L2G candidate rows](reports/dataset/l2g_candidates.csv), and [44 molecular-QTL colocalisation rows](reports/dataset/molecular_qtl_colocalisations.csv). The [dataset guide](reports/dataset/README.md) defines every field. The [raw Open Targets snapshot](reports/dataset/open_targets_raw_snapshot.zip) contains the manifest and nine original API response files for this bounded five-region extract.
+
+## How the pieces fit
+
+![Workflow from public source snapshot through integrity checks to separate evidence tables and an offline explorer](docs/evidence-workflow.svg)
+
+[Workflow, code map, and design decisions](WORKFLOW.md). The diagram shows a deterministic data pipeline, not a newly trained model.
 
 ## Research question
 

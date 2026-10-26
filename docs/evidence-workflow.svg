@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">From public records to inspectable evidence</title><desc id="desc">Deterministic integration of a pinned Open Targets snapshot. Preserve the source snapshot: Raw GraphQL responses, requests, release and response hashes The saved snapshot supports the offline workflow. Then Check integrity and structure: Verify hashes, pagination, identities and probability ranges Invalid records fail; partial evidence stays labeled. Then Compile the evidence: Match source gene IDs and retain nulls, unmatched rows and QC PIP, L2G, H4 and CLPP keep their separate meanings. Then Publish the saved views: JSON, CSV, audit report and self-contained interactive HTML Deterministic case-study and dataset exports are checkable.. Evidence availability is not evidence strength. This project trains no model and makes no causal-gene call.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="#2963b8" stroke-width="1.6"/></marker></defs>
+<rect width="1200" height="800" rx="24" fill="#f6f8fc"/>
+<text x="48" y="48" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="2" fill="#2963b8">YOGESH KUCHIMANCHI / PROJECT WALKTHROUGH</text>
+<text x="48" y="99" font-family="Segoe UI,Arial,sans-serif" font-size="34" font-weight="700" fill="#15243a">From public records to inspectable evidence</text>
+<text x="48" y="132" font-family="Segoe UI,Arial,sans-serif" font-size="19" fill="#465972">Deterministic integration of a pinned Open Targets snapshot</text>
+<rect x="48" y="166" width="733" height="110" rx="14" fill="#ffffff" stroke="#d5deeb" stroke-width="1.5"/><circle cx="88" cy="202" r="19" fill="#2963b8"/><text x="88" y="209" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="20" fill="#fff" font-weight="700">1</text><text x="124" y="203" font-family="Segoe UI,Arial,sans-serif" font-size="24" font-weight="700" fill="#15243a">Preserve the source snapshot</text>
+<text x="124" y="232" font-family="Segoe UI,Arial,sans-serif" font-size="18" fill="#465972">Raw GraphQL responses, requests, release and response hashes</text>
+<text x="124" y="256" font-family="Segoe UI,Arial,sans-serif" font-size="18" fill="#465972">The saved snapshot supports the offline workflow.</text>
+<text x="826" y="192" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#2963b8" letter-spacing="1">PUBLIC AGGREGATES</text>
+<text x="826" y="220" font-family="Segoe UI,Arial,sans-serif" font-size="18" fill="#465972">No participant-level data.</text>
+<text x="826" y="244" font-family="Segoe UI,Arial,sans-serif" font-size="18" fill="#465972">A new fetch is optional.</text>
+<path d="M414 276 V295" stroke="#2963b8" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+<rect x="48" y="303" width="733" height="110" rx="14" fill="#ffffff" stroke="#d5deeb" stroke-width="1.5"/><circle cx="88" cy="339" r="19" fill="#2963b8"/><text x="88" y="346" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="20" fill="#fff" font-weight="700">2</text><text x="124" y="340" font-family="Segoe UI,Arial,sans-serif" font-size="24" font-weight="700" fill="#15243a">Check integrity and structure</text>
+<text x="124" y="369" font-family="Segoe UI,Arial,sans-serif" font-size="18" fill="#465972">Verify hashes, pagination, identities and probability ranges</text>
+<text x="124" y="393" font-family="Segoe UI,Arial,sans-serif" font-size="18" fill="#465972">Invalid records fail; partial evidence stays labeled.</text>
+<text x="826" y="329" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#2963b8" letter-spacing="1">FAILURE PATH</text>
+<text x="826" y="357" font-family="Segoe UI,Arial,sans-serif" font-size="18" fill="#465972">Stop on invalid inputs.</text>
+<text x="826" y="381" font-family="Segoe UI,Arial,sans-serif" font-size="18" fill="#465972">Keep source warnings.</text>
+<path d="M414 413 V432" stroke="#2963b8" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+<rect x="48" y="440" width="733" height="110" rx="14" fill="#ffffff" stroke="#d5deeb" stroke-width="1.5"/><circle cx="88" cy="476" r="19" fill="#2963b8"/><text x="88" y="483" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="20" fill="#fff" font-weight="700">3</text><text x="124" y="477" font-family="Segoe UI,Arial,sans-serif" font-size="24" font-weight="700" fill="#15243a">Compile the evidence</text>
+<text x="124" y="506" font-family="Segoe UI,Arial,sans-serif" font-size="18" fill="#465972">Match source gene IDs and retain nulls, unmatched rows and QC</text>
+<text x="124" y="530" font-family="Segoe UI,Arial,sans-serif" font-size="18" fill="#465972">PIP, L2G, H4 and CLPP keep their separate meanings.</text>
+<text x="826" y="466" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#2963b8" letter-spacing="1">MISSINGNESS</text>
+<text x="826" y="494" font-family="Segoe UI,Arial,sans-serif" font-size="18" fill="#465972">No returned row does</text>
+<text x="826" y="518" font-family="Segoe UI,Arial,sans-serif" font-size="18" fill="#465972">not mean no effect.</text>
+<path d="M414 550 V569" stroke="#2963b8" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+<rect x="48" y="577" width="733" height="110" rx="14" fill="#ffffff" stroke="#d5deeb" stroke-width="1.5"/><circle cx="88" cy="613" r="19" fill="#2963b8"/><text x="88" y="620" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="20" fill="#fff" font-weight="700">4</text><text x="124" y="614" font-family="Segoe UI,Arial,sans-serif" font-size="24" font-weight="700" fill="#15243a">Publish the saved views</text>
+<text x="124" y="643" font-family="Segoe UI,Arial,sans-serif" font-size="18" fill="#465972">JSON, CSV, audit report and self-contained interactive HTML</text>
+<text x="124" y="667" font-family="Segoe UI,Arial,sans-serif" font-size="18" fill="#465972">Deterministic case-study and dataset exports are checkable.</text>
+<text x="826" y="603" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#2963b8" letter-spacing="1">OFFLINE OUTPUT</text>
+<text x="826" y="631" font-family="Segoe UI,Arial,sans-serif" font-size="18" fill="#465972">Inspect source evidence;</text>
+<text x="826" y="655" font-family="Segoe UI,Arial,sans-serif" font-size="18" fill="#465972">do not rank clinical targets.</text>
+<rect x="48" y="722" width="1104" height="48" rx="10" fill="#e8edf6"/><text x="68" y="752" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#243a55">Evidence availability is not evidence strength. This project trains no model and makes no causal-gene call.</text></svg>
