@@ -544,61 +544,52 @@ def markdown_report(evidence: dict, locus_rows: list[dict], counts: dict) -> str
 
 
 def availability_svg(locus_rows: list[dict]) -> str:
+    """Plot returned record counts with Matplotlib; do not alter source evidence."""
+    import io
+    import os
+    import re
+    os.environ.setdefault("MPLCONFIGDIR", str(Path(tempfile.gettempdir()) / "gwas-plot-cache"))
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    if matplotlib.__version__ != "3.10.8":
+        raise RuntimeError("Install requirements-visuals.txt before reproducing the plot.")
     columns = (
-        ("variant_rows", "Variant rows"),
-        ("l2g_candidates", "L2G candidates"),
-        ("total_colocalisation_rows", "All QTL colocs"),
-        ("candidate_matched_colocalisation_rows", "Matched QTL colocs"),
-        ("source_quality_controls", "Source QC flags"),
+        ("variant_rows", "Variant rows", "#4d6f8b"),
+        ("l2g_candidates", "L2G candidates", "#bd713d"),
+        ("total_colocalisation_rows", "All QTL rows", "#57846b"),
+        ("candidate_matched_colocalisation_rows", "Candidate-matched QTL rows", "#856d9c"),
     )
-    width, left, top, cell_w, row_h = 1120, 275, 150, 155, 54
-    height = top + row_h * len(locus_rows) + 125
-    pieces = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">',
-        '<title id="title">Evidence availability across five FinnGen type 2 diabetes loci</title>',
-        '<desc id="desc">A table-like chart of returned variant, L2G, total colocalisation, candidate-matched colocalisation, and source quality-control records. Counts describe availability, not evidence strength.</desc>',
-        '<rect width="100%" height="100%" fill="#ffffff"/>',
-        '<style>text{font-family:Arial,sans-serif;fill:#111827}.title{font-size:22px;font-weight:700}.subtitle{font-size:13px;fill:#4b5563}.head{font-size:12px;font-weight:700}.label{font-size:13px;font-weight:700}.small{font-size:11px;fill:#4b5563}.value{font-size:16px;font-weight:700}.foot{font-size:12px;fill:#374151}</style>',
-        '<text id="title-text" x="36" y="38" class="title">Evidence availability across five FinnGen T2D loci</text>',
-        '<text x="36" y="64" class="subtitle">Counts show returned public-source records. They do not measure biological support or causal strength.</text>',
-    ]
-    for column_index, (_, label) in enumerate(columns):
-        x = left + column_index * cell_w + cell_w / 2
-        pieces.append(f'<text x="{x}" y="112" text-anchor="middle" class="head">{html.escape(label)}</text>')
-    for row_index, row in enumerate(locus_rows):
-        y = top + row_index * row_h
-        label = f"{row['top_l2g_gene'] or 'No L2G'} · {row['lead_variant']}"
-        pieces.append(f'<text x="36" y="{y + 21}" class="label">{html.escape(label)}</text>')
-        pieces.append(f'<text x="36" y="{y + 39}" class="small">study locus {html.escape(row["study_locus_id"][:10])}…</text>')
-        values = (
-            row["variant_rows"],
-            row["l2g_candidates"],
-            row["total_colocalisation_rows"],
-            row["candidate_matched_colocalisation_rows"],
-            0 if row["source_quality_controls"] == "none returned" else len(row["source_quality_controls"].split("; ")),
-        )
-        for column_index, value in enumerate(values):
-            x = left + column_index * cell_w
-            fill = "#dbeafe" if value else "#f3f4f6"
-            stroke = "#60a5fa" if value else "#d1d5db"
-            if column_index == 4 and value:
-                fill, stroke = "#fef3c7", "#f59e0b"
-            pieces.append(f'<rect x="{x + 7}" y="{y}" width="{cell_w - 14}" height="42" rx="7" fill="{fill}" stroke="{stroke}"/>')
-            pieces.append(f'<text x="{x + cell_w / 2}" y="{y + 27}" text-anchor="middle" class="value">{value}</text>')
-    foot_y = top + row_h * len(locus_rows) + 20
-    pieces.extend(
-        [
-            f'<rect x="36" y="{foot_y}" width="16" height="16" rx="3" fill="#dbeafe" stroke="#60a5fa"/>',
-            f'<text x="60" y="{foot_y + 13}" class="foot">one or more records returned</text>',
-            f'<rect x="250" y="{foot_y}" width="16" height="16" rx="3" fill="#f3f4f6" stroke="#d1d5db"/>',
-            f'<text x="274" y="{foot_y + 13}" class="foot">no record returned</text>',
-            f'<rect x="430" y="{foot_y}" width="16" height="16" rx="3" fill="#fef3c7" stroke="#f59e0b"/>',
-            f'<text x="454" y="{foot_y + 13}" class="foot">unresolved source QC flag</text>',
-            f'<text x="36" y="{foot_y + 50}" class="foot">Status: {STATUS}</text>',
-            "</svg>",
-        ]
-    )
-    return "\n".join(pieces) + "\n"
+    with plt.rc_context({"font.family": "DejaVu Sans", "font.size": 10,
+                         "svg.fonttype": "none", "svg.hashsalt": "gwas-record-counts",
+                         "axes.spines.top": False, "axes.spines.right": False}):
+        fig, ax = plt.subplots(figsize=(8.6, 5.7), layout="constrained")
+        y = list(range(len(locus_rows)))
+        for j, (key, label, color) in enumerate(columns):
+            values = [int(row[key]) for row in locus_rows]
+            assert all(n >= 0 for n in values)
+            positions = [i + (j - 1.5) * .19 for i in y]
+            bars = ax.barh(positions, values, height=.17, label=label, color=color)
+            ax.bar_label(bars, padding=3, fontsize=9)
+        ax.set(yticks=y, yticklabels=[row["lead_variant"] for row in locus_rows],
+               xlabel="Returned records", ylabel="Lead variant (GRCh38)",
+               title="Records returned for five type 2 diabetes regions")
+        ax.invert_yaxis()
+        ax.set_xlim(0, max(int(row[key]) for row in locus_rows for key, _, _ in columns) * 1.14)
+        ax.grid(axis="x", color="#e5e5e5", linewidth=.6)
+        ax.set_axisbelow(True)
+        ax.legend(frameon=False, loc="lower right", fontsize=9)
+        buf = io.StringIO()
+        fig.savefig(buf, format="svg", metadata={"Date": None}, facecolor="white")
+        plt.close(fig)
+    svg = buf.getvalue().replace('<svg ', '<svg role="img" aria-labelledby="title desc" ', 1)
+    match = re.search(r"<svg\b[^>]*>", svg)
+    desc = ('<title id="title">Returned evidence records by locus</title>'
+            '<desc id="desc">Variant, L2G candidate, total QTL and candidate-matched QTL '
+            'record counts from the pinned Open Targets snapshot. Counts describe availability, '
+            'not biological support. All five loci have an unresolved source quality-control '
+            'flag and remain pending human review. Missing records are not negative evidence.</desc>')
+    return svg[:match.end()] + desc + svg[match.end():]
 
 
 def build_case_study(evidence_path: Path = DEFAULT_EVIDENCE, report_dir: Path = DEFAULT_REPORT_DIR):
