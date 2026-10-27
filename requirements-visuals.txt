@@ -1,0 +1,4 @@
+# Plot regeneration only; evidence collection and validation remain unchanged.
+matplotlib==3.10.8
+numpy==2.3.5
+pillow==12.3.0

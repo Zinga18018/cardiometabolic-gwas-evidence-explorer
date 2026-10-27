@@ -9,6 +9,22 @@ New to genetics? Start with the [beginner and interview guide](BEGINNER_GUIDE.md
 **Development snapshot:** September 2026<br>
 **Initial public release:** 25 September 2026
 
+## Returned records
+
+![Returned variant, L2G and QTL record counts across five selected loci.](reports/evidence_availability.svg)
+
+Counts describe the records returned, not biological support. All five loci carry
+an unresolved source QC flag; missing records are not negative evidence.
+[Source counts](reports/locus_summary.csv) · [QC details](reports/audit_report.md).
+
+Regenerate the plot and case study from the saved public evidence:
+
+```sh
+python -m pip install -r requirements-visuals.txt
+python analysis/build_case_study.py
+python analysis/build_case_study.py --check
+```
+
 ## Abstract
 
 Genome-wide association studies can identify regions associated with type 2 diabetes, but a regional signal does not by itself identify the responsible variant or gene. This project organises existing public evidence from Open Targets release 26.09 for five selected regions from the FinnGen R12 type 2 diabetes study. It brings together 65 fine-mapped variant rows, 11 Locus-to-Gene candidates, and 44 molecular-QTL colocalisation rows while preserving source identifiers, missing values, pagination checks, response hashes, and quality-control warnings. Variant PIP, L2G score, COLOC-PIP H4, and eCAVIAR CLPP remain separate because they describe different models and cannot be treated as one causal probability. The result is an auditable explorer and downloadable dataset for examining how variant, gene-ranking, and molecular evidence differ across regions. It is a bounded descriptive case study, not causal-gene validation, a clinical target ranking, or an analysis of participant-level data.
@@ -36,8 +52,6 @@ Open the [live interactive explorer](https://zinga18018.github.io/cardiometaboli
 The exact source-derived tables are available as [65 variant rows](reports/dataset/variants.csv), [11 L2G candidate rows](reports/dataset/l2g_candidates.csv), and [44 molecular-QTL colocalisation rows](reports/dataset/molecular_qtl_colocalisations.csv). The [dataset guide](reports/dataset/README.md) defines every field. The [raw Open Targets snapshot](reports/dataset/open_targets_raw_snapshot.zip) contains the manifest and nine original API response files for this bounded five-region extract.
 
 ## How the pieces fit
-
-![Workflow from public source snapshot through integrity checks to separate evidence tables and an offline explorer](docs/evidence-workflow.svg)
 
 [Workflow, code map, and design decisions](WORKFLOW.md). The diagram shows a deterministic data pipeline, not a newly trained model.
 
